@@ -10,26 +10,18 @@ public class BackGround : MonoBehaviour
     [SerializeField] private Transform[] cactusTs;
     [SerializeField] private Transform[] groundTs;  //fast
 
-    private GameManager gameManager;
-
-
     private float skySpeed = 3f;
     private float cloudSpeed = 3f;
     private float backSpeed = 4f;
     private float cactusSpeed = 4.5f;
     private float groundpeed = 5f;
 
-    private float lastPos = -8f;    //끝 값
-    private float initPos = 30f;    //시작 값
-    // Update is called once per frame
-    void Start()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-    }
+    private float lastPos = -14f;    //끝 값
+    private float initPos = 45f;    //시작 값
 
     void Update()
     {
-        if (gameManager.timeSize == 1)
+        if (Time.timeScale != 0)
         {
             Move();
         }
@@ -39,12 +31,12 @@ public class BackGround : MonoBehaviour
     {
         foreach (var item in skyTs)
         {
-            BGMove(item, skySpeed, -1f);
+            BGMove(item, skySpeed, 0);    //-1f
         }
         
         foreach (var item in cloudTs)
         {
-            BGMove(item, cloudSpeed, 1.71f);
+            BGMove(item, cloudSpeed, 0);    //1.71f
         }
 
         foreach (var item in backTs)
@@ -59,7 +51,7 @@ public class BackGround : MonoBehaviour
 
         foreach (var item in groundTs)
         {
-            BGMove(item, groundpeed, -3f);
+            BGMove(item, groundpeed, 0);  //-3f
         }
     }
 

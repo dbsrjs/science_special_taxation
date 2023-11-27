@@ -1471,12 +1471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d895d51ad9c67c4f9407a5993e4bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSize: 1
+  panel: {fileID: 2118451376}
   score_text: {fileID: 1657461264}
   max_score_text: {fileID: 764000018}
-  animator: {fileID: 1657461263}
-  nomal_score: 0
-  panel: {fileID: 2118451376}
   question_Text: {fileID: 707226340}
   questions:
   - "\uBB3C\uC9C8\uC744 \uC774\uB8E8\uB294 \uBD84\uC790\uAC00 \uBB34\uC791\uC704\uB85C
@@ -1553,6 +1550,8 @@ MonoBehaviour:
   - "\uB3D9\uBB3C \uC138\uD3EC\uC5D0\uB294 \uC138\uD3EC\uBCBD\uC774 \uC874\uC7AC\uD55C\uB2E4."
   - "\uC2DD\uBB3C \uC138\uD3EC\uC5D0\uB294 \uD575\uC774 \uC874\uC7AC\uD558\uC9C0
     \uC54A\uB294\uB2E4."
+  nomal_score: 0
+  question_score: 0
 --- !u!1 &1088776217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,7 +2153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 93.27}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489600699

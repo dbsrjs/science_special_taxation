@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Score : GameManager
+public class Score : MonoBehaviour
 {
+    public GameObject panel;
     [SerializeField] private Text score_text;
     [SerializeField] private Text max_score_text;
+
+    [SerializeField] private Text question_Text;    //문제 출력
+    [SerializeField] private List<string> questions; // 문제 리스트
 
     [HideInInspector] public float nomal_score = 0;
     [HideInInspector] public float question_score = 0;
     private float max_score = 0;
-
-    [SerializeField] private GameObject panel;
-    [SerializeField] private Text question_Text;    //문제 출력
-    [SerializeField] private List<string> questions; // 문제 리스트
 
     int randomIndex;
 
@@ -28,7 +28,7 @@ public class Score : GameManager
 
     void Update()
     {
-        if (timeSize != 0)
+        if (Time.timeScale != 0)
         {
             nomal_score += Time.deltaTime * 13;   //nomal_score 값 증가(13)
             question_score += Time.deltaTime * 13;
@@ -42,18 +42,19 @@ public class Score : GameManager
         {
             max_score = nomal_score;//max_score 값 갱신
             max_score_text.text = Mathf.FloorToInt(max_score).ToString("0000");
-            nomal_score = 0;    //점수 초기화
-            question_score = 0;
         }
+        nomal_score = 0;    //점수 초기화
+        question_score = 0;
     }
 
     public void Question() //문제 출력
     {
+        Time.timeScale = 0;
         panel.SetActive(true);
-        GameStop();
         randomIndex = Random.Range(0, questions.Count); //14까지 정답
         string randomQuestion = questions[randomIndex];
-        question_Text.text = randomQuestion;        
+        question_Text.text = randomQuestion;
+        question_score = 0;
         //Debug.Log(randomIndex);
     }
 
@@ -68,7 +69,7 @@ public class Score : GameManager
             nomal_score -= 30;
             panel.SetActive(false);
         }
-        GameStart();
+        Time.timeScale = 1;
     }
 
     public void X_Button()
@@ -82,6 +83,6 @@ public class Score : GameManager
         {
             panel.SetActive(false);
         }
-        GameStart();
+        Time.timeScale = 1;
     }
 }
