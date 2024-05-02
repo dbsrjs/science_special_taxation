@@ -38,31 +38,30 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (score.question_score >= 50 && transform.position.y <= 0.017)    //문제 출력
+        if (score.question_score >= 50 && jump == true)    //문제 출력
         {
             score.Question();
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Cactus")    //선인장과 충돌
+        {
+            Debug.Log("test");
+            animator.SetTrigger("doDie");
+            score.Die();  //max_score 값 갱신
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
+            restart_buttin.SetActive(true);
+        }
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
-        {
-            Debug.Log("test");
             jump = true;
-        }
-        
-        else if (score != null)
-        {
-            if (collision.gameObject.layer == 6)    //선인장과 충돌
-            {
-                animator.SetTrigger("doDie");
-                score.Die();  //max_score 값 갱신
-                Time.timeScale = 0;
-                gameOver.SetActive(true);
-                restart_buttin.SetActive(true);
-            }
-        }
     }
 
     public void Restart_Btn()

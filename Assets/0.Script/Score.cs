@@ -7,28 +7,37 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public GameObject panel;
-    [SerializeField] private Text score_text;
-    [SerializeField] private Text max_score_text;
+    [SerializeField] private Text score_text;   //현재 스코어
+    [SerializeField] private Text max_score_text;//최고 스코어
 
     [SerializeField] private Text question_Text;    //문제 출력
     [SerializeField] private List<string> questions; // 문제 리스트
 
-    [HideInInspector] public float nomal_score = 0;
-    [HideInInspector] public float question_score = 0;
-    private float max_score = 0;
+    [HideInInspector] public float nomal_score = 0; //현재 스코어
+    [HideInInspector] public float question_score = 0;  //점수 계산 스코어
+    private float max_score = 0;    //최고 스코어
+
+    [SerializeField] private GameObject startText;
 
     int randomIndex;
+    bool isStart = true;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     void Update()
     {
-        if (Time.timeScale != 0)
+        if (Input.GetKeyDown(KeyCode.Space) && isStart)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+            isStart = false;
+            startText.SetActive(false);
+        }
+
+        if (Time.timeScale != 0 && !isStart)
         {
             nomal_score += Time.deltaTime * 13;   //nomal_score 값 증가(13)
             question_score += Time.deltaTime * 13;
@@ -55,15 +64,12 @@ public class Score : MonoBehaviour
         string randomQuestion = questions[randomIndex];
         question_Text.text = randomQuestion;
         question_score = 0;
-        //Debug.Log(randomIndex);
     }
 
     public void O_Button()
     {
         if (randomIndex <= 14)
-        {
             panel.SetActive(false);
-        }
         else
         {
             nomal_score -= 30;
