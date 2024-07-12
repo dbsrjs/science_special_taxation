@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
             {
                 jump = false;
                 animator.SetTrigger("doJump");
-                Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-                rigidbody.AddForce(new Vector2(0f, 6f), ForceMode2D.Impulse);
+                Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+                rigid.AddForce(Vector2.up * 6f, ForceMode2D.Impulse);
             }
         }
 
