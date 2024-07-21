@@ -1,18 +1,18 @@
 # science_special_taxation
 
 # Control
-- Mouse Button
-- Space bar
+- 마우스 버튼
+- 스패이스바
 
 # Information
-1. If you get the question wrong, your score will be reduced by 30 points.
-2. The white lettering in the upper right corner is the current score.
-3. The blue letter on the top right is the highest score.
-
+1. 문제를 틀리면 점수가 30점 깎입니다.
+2. 우측 상단에 있는 흰색 글자가 현재 점수입니다.
+3. 우측 상단에 있는 파란색 글씨가 가장 높은 점수입니다.
+   
 # How to play video games
-- You have to run for a long time without touching the cactus
-- If you touch a cactus, it will die.
-- Every time you go up 50 points, you have to solve science-related problems.
+- 선인장을 건드리지 않고 최대한 오래 뛰어야 합니다
+- 선인장을 건드리면 죽게 됩니다.
+- 50점이 증가할 때마다 과학 관련 문제를 풀어야 합니다.
    
 # Play Scene
   ## Start Scene
